@@ -1,0 +1,17 @@
+DROP TABLE IF EXISTS users;
+CREATE TABLE users(
+    id BIGSERIAL PRIMARY KEY,
+    unique_id VARCHAR(50) UNIQUE,
+    name VARCHAR(200),
+    education VARCHAR(500),
+    date VARCHAR(500),
+    city VARCHAR(500),
+    mobile VARCHAR(60),
+    usia BIGINT,
+    url VARCHAR(500),
+    image1 VARCHAR(500),
+    image2 VARCHAR(500),
+    status BOOLEAN DEFAULT true,
+    created_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(),
+    updated_at TIMESTAMP WITHOUT TIME ZONE
+);

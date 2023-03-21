@@ -1,0 +1,210 @@
+{
+	"info": {
+		"_postman_id": "4a14c755-b72a-48dc-a446-96ce664ded8c",
+		"name": "mobilku-test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13426910"
+	},
+	"item": [
+		{
+			"name": "insert",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/Users/hegemoni/Desktop/Screenshot 2023-03-14 at 00.02.49.png"
+						},
+						{
+							"key": "education",
+							"value": "SMA",
+							"type": "text"
+						},
+						{
+							"key": "city",
+							"value": "Kabupaten Kepulauan Seribu",
+							"type": "text"
+						},
+						{
+							"key": "mobile",
+							"value": "812121212",
+							"type": "text"
+						},
+						{
+							"key": "usia",
+							"value": "10",
+							"type": "text"
+						},
+						{
+							"key": "date",
+							"value": "Tue Mar 19 2013 00:00:00 GMT+0700 (Western Indonesia Time)",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Restu Rachmi Andika",
+							"type": "text"
+						},
+						{
+							"key": "url",
+							"value": "https://4c75-103-121-18-0.ap.ngrok.io/test-api",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{endpoint}}/api/insert-data",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"api",
+						"insert-data"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/Users/hegemoni/Desktop/Screenshot 2023-01-12 at 09.03.56.png"
+						},
+						{
+							"key": "education",
+							"value": "SMA",
+							"type": "text"
+						},
+						{
+							"key": "city",
+							"value": "Kabupaten Kepulauan Seribu",
+							"type": "text"
+						},
+						{
+							"key": "mobile",
+							"value": "812121212",
+							"type": "text"
+						},
+						{
+							"key": "usia",
+							"value": "10",
+							"type": "text"
+						},
+						{
+							"key": "date",
+							"value": "Tue Mar 19 2013 00:00:00 GMT+0700 (Western Indonesia Time)",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Restu Rachmi Andika",
+							"type": "text"
+						},
+						{
+							"key": "url",
+							"value": "https://4c75-103-121-18-0.ap.ngrok.io/test-api",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{endpoint}}/api/update-user-data?field=id&value=1",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"api",
+						"update-user-data"
+					],
+					"query": [
+						{
+							"key": "field",
+							"value": "id",
+							"description": "parameter field to update"
+						},
+						{
+							"key": "value",
+							"value": "1",
+							"description": "parameter value to update"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{endpoint}}/api/get-user-data?mode=exact&field=id&value=1",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"api",
+						"get-user-data"
+					],
+					"query": [
+						{
+							"key": "mode",
+							"value": "exact",
+							"description": "query filter mode (contains or exact)"
+						},
+						{
+							"key": "field",
+							"value": "id",
+							"description": "parameter filter field"
+						},
+						{
+							"key": "value",
+							"value": "1",
+							"description": "parameter filter value"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "endpoint",
+			"value": "https://87ed-182-3-39-157.ap.ngrok.io",
+			"type": "string"
+		}
+	]
+}
