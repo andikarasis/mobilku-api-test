@@ -15,12 +15,27 @@ const router = require('./router')
 
 // Allow cors
 const cors = require('cors')
-app.use(cors({
-    origin: [
-        "*",
-        "https://www.mobilku.biz",
+const corsOpts = {
+    origin: ['*', "https://www.mobilku.biz", ],
+
+    methods: [
+        'GET',
+        'POST',
+        'PUT',
     ],
-}));
+
+    allowedHeaders: [
+        'Content-Type',
+    ],
+};
+let allowCors = function (req, res, next) {
+    res.header('Access-Control-Allow-Origin', "https://www.mobilku.biz");
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    next();
+}
+app.use(allowCors);
+app.use(cors(corsOpts));
 app.use('/api', router)
 const Database = require('./db')
 const db = new Database()
@@ -32,4 +47,4 @@ app.get('/', (req, resp) => {
     return response(resp, 200, 'API is Active', {}, null)
 })
 
-app.listen(3001, () => console.log('Server running on port 3001'), console.log('Url local http://localhost:3001'))
+app.listen(process.env.PORT || 3001, () => console.log('Server running on port 3001'), console.log('Url local http://localhost:3001'))

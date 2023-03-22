@@ -13,6 +13,7 @@ This backend is running NodeJs and ExpressJs with PostgreSQL database.
 ### Setting Up
 * Create a database using the name you want
 * Create a table using a file named **db-schema.txt**
+* Setup PostgreSQL Database (connectionstring) on directory db file **index.js** or
 * Setup PostgreSQL Database (host, port, user, password, name) on directory db file **index.js**
 
 ### Executing program

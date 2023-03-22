@@ -4,6 +4,8 @@ const ApiController = require('../controllers/ApiController')
 
 router.post('/insert-data', ApiController.insertData)
 router.get('/get-user-data', ApiController.getDataUser)
-router.post('/update-user-data', ApiController.updateDataUser)
+router.put('/update-user-data', ApiController.updateDataUser)
+
+router.post('/upload', ApiController.UploadFile)
 
 module.exports = router

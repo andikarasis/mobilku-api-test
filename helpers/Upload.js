@@ -4,12 +4,53 @@ const fs = require('fs');
 // Configuration 
 cloudinary.config({
   cloud_name: "dj68bj5ql",
-  api_key: "599386738488988",
-  api_secret: "XvJQc9L2OV3tDWxf8XRiQoKDNR8"
+  api_key: "API KEY",
+  api_secret: "SECRET"
 });
 
 // AWS Setting
 const uuid = require('uuid4')
+const AWS = require('aws-sdk')
+const combinedEndpoint = `${"END_POINT_DIGITAL_OCEAN"}/assets/image/`
+const endpointDigi = new AWS.Endpoint(combinedEndpoint)
+const s3 = new AWS.S3({
+  accessKeyId: 'ACCESS_KEY',
+  secretAccessKey: 'SECRET_ACCESS_KEY',
+  region: 'sgp1',
+  endpoint: endpointDigi,
+  s3BucketEndpoint: endpointDigi,
+})
+
+
+function uploadFile(file_data, file_mimetype, file_name) {
+  return new Promise((done, reject) => {
+    const mimetype = file_mimetype
+    const ext = file_name.substring(file_name.lastIndexOf('.') + 1)
+    let filename = `${uuid()}.${ext}`
+    console.log(`Change file name from ${file_name} to ${filename}`)
+    s3.upload(
+      {
+        Body: file_data,
+        ACL: 'public-read',
+        Bucket: 'media-ss',
+        Key: filename,
+        ContentType: mimetype,
+      },
+      (err, res) => {
+        if (err) return reject(err)
+
+        let url = res.Location
+        if (!url.includes('http')) {
+          url = `https://${url}`
+        }
+
+        console.log('Success Upload file')
+        done(url)
+      }
+    )
+  })
+}
+
 
 async function uploadCloudinary(image, fileName) {
   // console.log("FILENAME", fileName);
@@ -60,5 +101,6 @@ async function uploadToCloudinary(locaFilePath) {
 
 module.exports = {
   uploadCloudinary,
-  uploadToCloudinary
+  uploadToCloudinary,
+  uploadFile
 }
